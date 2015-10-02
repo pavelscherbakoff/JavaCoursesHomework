@@ -4,6 +4,9 @@ public class Extension {
 
     static class Phone {
 
+        public void makeCall() {
+            System.out.println("Making call");
+        }
     }
 
     static class SmartPhone extends Phone {
@@ -15,6 +18,7 @@ public class Extension {
 
     public static void main(String[] args) {
         SmartPhone smartPhone = new SmartPhone();
+        smartPhone.makeCall();
         smartPhone.makePhoto();
     }
 }
