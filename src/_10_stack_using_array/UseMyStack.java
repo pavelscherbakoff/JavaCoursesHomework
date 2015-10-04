@@ -6,44 +6,37 @@ public class UseMyStack {
 
     public static void main(String[] args) {
 
-        MyStack stack = new MyStack();
+        MyStack<String> stack = new MyStack<>();
 
         System.out.println("----------> Initial stack");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Push one");
         stack.push("one");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Push two");
         stack.push("two");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Push three");
         stack.push("three");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Top and pop");
         System.out.println(stack.top());
         System.out.println(stack.pop());
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Top and pop");
         System.out.println(stack.top());
         System.out.println(stack.pop());
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Top and pop");
         System.out.println(stack.top());
         System.out.println(stack.pop());
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Top and pop");
         System.out.println(stack.top());
@@ -51,25 +44,20 @@ public class UseMyStack {
 
         System.out.println("----------> Push one");
         stack.push("one");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
 
         System.out.println("----------> Push two");
         stack.push("two");
-        printStack(stack);
-        printStackParams(stack);
+        printStackWithParams(stack);
     }
 
-    private static void printStack(MyStack stack) {
-        Iterator<String> it = stack.iterator();
-        String s = "[";
+    private static void printStackWithParams(MyStack stack) {
+        Iterator it = stack.iterator();
+        String stringStack = "[";
         while (it.hasNext())
-            s += it.next() + " ";
-        s += "]";
-        System.out.println(s);
-    }
-
-    private static void printStackParams(MyStack stack) {
+            stringStack += it.next() + " ";
+        stringStack += "]";
+        System.out.println(stringStack);
         System.out.println("Capacity = " + stack.capacity());
         System.out.println("Size = " + stack.size());
         System.out.println("Is empty = " + stack.isEmpty());

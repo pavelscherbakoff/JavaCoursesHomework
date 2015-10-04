@@ -2,7 +2,7 @@ package _10_stack_using_array;
 
 import java.util.Iterator;
 
-public class MyStack implements Iterable {
+public class MyStack<T> implements Iterable<T> {
 
     private static int INITIAL_CAPACITY = 10;
     private static double CAPACITY_INCREASE = 0.75;
@@ -10,9 +10,9 @@ public class MyStack implements Iterable {
 
     private int size = 0;
     private int capacity = INITIAL_CAPACITY;
-    private String[] values = new String[INITIAL_CAPACITY];
+    private T[] values = (T[]) new Object[INITIAL_CAPACITY];
 
-    public void push(String value) {
+    public void push(T value) {
         System.arraycopy(values, 0, values, 1, size);
         values[0] = value;
         size++;
@@ -23,11 +23,11 @@ public class MyStack implements Iterable {
         }
     }
 
-    public String pop() {
+    public T pop() {
         if (size == 0)
             return null;
 
-        String value = values[0];
+        T value = values[0];
         System.arraycopy(values, 1, values, 0, size);
         size--;
 
@@ -40,12 +40,12 @@ public class MyStack implements Iterable {
     }
 
     private void updateValuesCapacity() {
-        String[] temp = new String[capacity];
+        T[] temp = (T[]) new Object[capacity];
         System.arraycopy(values, 0, temp, 0, size);
         values = temp;
     }
 
-    public String top() {
+    public T top() {
         return values[0];
     }
 
@@ -62,7 +62,7 @@ public class MyStack implements Iterable {
     }
 
     @Override
-    public Iterator<String> iterator() {
+    public Iterator<T> iterator() {
         return new MyStackIterator(values);
     }
 }

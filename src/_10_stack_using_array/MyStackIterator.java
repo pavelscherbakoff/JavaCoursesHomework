@@ -2,12 +2,12 @@ package _10_stack_using_array;
 
 import java.util.Iterator;
 
-public class MyStackIterator implements Iterator<String> {
+public class MyStackIterator<T> implements Iterator<T> {
 
-    String[] stack;
+    T[] stack;
     int current;
 
-    public MyStackIterator(String[] stack) {
+    public MyStackIterator(T[] stack) {
         this.stack = stack;
         current = 0;
     }
@@ -18,8 +18,8 @@ public class MyStackIterator implements Iterator<String> {
     }
 
     @Override
-    public String next() {
-        String value = stack[current];
+    public T next() {
+        T value = stack[current];
         current++;
         return value;
     }
