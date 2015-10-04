@@ -19,7 +19,7 @@ public class MyStack implements Iterable {
 
         if (size > capacity * CAPACITY_INCREASE) {
             capacity *= 2;
-            updateValuesWithNewCapacity();
+            updateValuesCapacity();
         }
     }
 
@@ -31,15 +31,15 @@ public class MyStack implements Iterable {
         System.arraycopy(values, 1, values, 0, size);
         size--;
 
-        if (1 < size & size < capacity * CAPACITY_DECREASE) {
+        if (size < capacity * CAPACITY_DECREASE) {
             capacity /= 2;
-            updateValuesWithNewCapacity();
+            updateValuesCapacity();
         }
 
         return value;
     }
 
-    private void updateValuesWithNewCapacity() {
+    private void updateValuesCapacity() {
         String[] temp = new String[capacity];
         System.arraycopy(values, 0, temp, 0, size);
         values = temp;
