@@ -35,7 +35,7 @@ public class Genome {
         }
     }
 
-    public void searchDuplicatesSorting(char[] data, int M) {
+    public ArrayList<String> searchDuplicatesSorting(char[] data, int M) {
         List<String> words = new LinkedList<>();
 
         System.out.println("start");
@@ -66,9 +66,7 @@ public class Genome {
             counter++;
         }
 
-        for (String match : matches)
-            System.out.println(match);
-
+        return matches;
     }
 
     public static void main(String[] args) {
@@ -82,7 +80,9 @@ public class Genome {
 //		genome.searchDuplicatesBruteForce(genome.sequence, 10);
 
         System.out.println("Searching");
-        genome.searchDuplicatesSorting(genome.sequence, 10);
+        ArrayList<String> matches = genome.searchDuplicatesSorting(genome.sequence, 10);
+        for (String match : matches)
+            System.out.println(match);
 
     }
 
