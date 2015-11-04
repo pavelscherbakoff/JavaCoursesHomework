@@ -1,4 +1,4 @@
-package _8_inner_iterators;
+package _8_iterators;
 
 import java.util.Iterator;
 
