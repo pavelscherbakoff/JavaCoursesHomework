@@ -11,6 +11,16 @@ public class UseMyList {
         list.add("three");
 
         System.out.println(list);
+        System.out.println(list.toStringReversed());
+        System.out.println(list.getFirst());
+
+        System.out.println(list);
+        System.out.println(list.toStringReversed());
+        System.out.println(list.getLast());
+
+        System.out.println(list);
+        System.out.println(list.toStringReversed());
+        System.out.println(list.getLast());
     }
 
 }

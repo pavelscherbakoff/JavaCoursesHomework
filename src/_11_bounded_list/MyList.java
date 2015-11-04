@@ -1,4 +1,4 @@
-package _4_linked_list;
+package _11_bounded_list;
 
 public class MyList<T> {
 
@@ -10,9 +10,15 @@ public class MyList<T> {
 
     Node first;
     Node last;
-    int size;
+    int size, maxSize;
 
-    public void add(T data) {
+    public MyList(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public void add(T data) throws MyListOverflowException {
+        if (size == maxSize)
+            throw new MyListOverflowException(maxSize);
         Node node = new Node();
         node.data = data;
         node.next = null;
@@ -29,7 +35,9 @@ public class MyList<T> {
         size++;
     }
 
-    public T getLast() {
+    public T getLast() throws MyListUnderflowException {
+        if (size == 0)
+            throw new MyListUnderflowException();
         T data = last.data;
         last = last.previous;
         if (size > 1)
@@ -38,7 +46,9 @@ public class MyList<T> {
         return data;
     }
 
-    public T getFirst() {
+    public T getFirst() throws MyListUnderflowException {
+        if (size == 0)
+            throw new MyListUnderflowException();
         T data = first.data;
         first = first.next;
         if (size > 1)
