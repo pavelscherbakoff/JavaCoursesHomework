@@ -13,15 +13,15 @@ public class FivePhilosophers {
             sleepStarted = System.currentTimeMillis();
         }
 
-        public void activate() {
+        public void eat() {
             synchronized (leftStick) {
                 synchronized (rightStick) {
                     long sleepElapsed = System.currentTimeMillis() - sleepStarted;
                     if (sleepElapsed > 20100) // 100ms for sticks switching
-                        System.out.println(this + "dead with sleepElapsed = " + sleepElapsed);
-                    System.out.println(this + " start eat");
+                        System.out.println(this + " is dead because not eat during " + sleepElapsed + " ms");
+                    System.out.println(this + " started eat");
                     pause(10000);
-                    System.out.println(this + " finish eat");
+                    System.out.println(this + " finished eat");
                     sleepStarted = System.currentTimeMillis();
                 }
             }
@@ -57,7 +57,7 @@ public class FivePhilosophers {
                 @Override
                 public void run() {
                     while (true) {
-                        philosopher.activate();
+                        philosopher.eat();
                         pause(20000);
                     }
                 }

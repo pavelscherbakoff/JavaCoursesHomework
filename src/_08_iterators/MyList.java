@@ -102,4 +102,29 @@ public class MyList<T> implements Iterable<T> {
         public void remove() {
         }
     }
+
+    static class StaticIterator<T1> implements Iterator<T1> {
+
+        MyList<T1>.Node current;
+
+        public StaticIterator(MyList<T1> list) {
+            this.current = list.first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T1 next() {
+            T1 data = current.data;
+            current = current.next;
+            return data;
+        }
+
+        @Override
+        public void remove() {
+        }
+    }
 }

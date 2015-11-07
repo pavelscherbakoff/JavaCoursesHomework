@@ -20,6 +20,9 @@ public class UseMyList {
 
         Iterator<String> innerIterator = list.new InnerIterator();
         printListUsingIterator(innerIterator);
+
+        MyList.StaticIterator<String> staticIterator = new MyList.StaticIterator<>(list);
+        printListUsingIterator(staticIterator);
     }
 
     private static void printListUsingIterator(Iterator<String> it) {
