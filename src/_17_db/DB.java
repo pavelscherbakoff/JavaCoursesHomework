@@ -72,6 +72,7 @@ public class DB {
         try {
             Statement statement = connection.createStatement();
             queryAndPrint(statement, "select * from family");
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
