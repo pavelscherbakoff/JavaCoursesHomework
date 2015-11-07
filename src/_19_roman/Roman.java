@@ -21,13 +21,13 @@ public class Roman {
         arabic = (arabic - tens) / 10;
         int hundreds = arabic % 10;
 
-        if (hundreds >= 1)
+        if (hundreds > 0)
             roman += hundredsArray[hundreds - 1];
 
-        if (tens >= 1)
+        if (tens > 0)
             roman += tensArray[tens - 1];
 
-        if (ones >= 1)
+        if (ones > 0)
             roman += onesArray[ones - 1];
 
         return String.valueOf(roman);
