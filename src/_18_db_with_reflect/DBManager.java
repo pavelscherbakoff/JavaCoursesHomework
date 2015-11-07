@@ -127,43 +127,39 @@ public class DBManager {
     public static <T> void save(Class<T> clazz, T t) {
 
         String tableName = clazz.getSimpleName().toLowerCase();
+        ArrayList<String> fields = new ArrayList<>();
         ArrayList<String> values = new ArrayList<>();
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("describe " + tableName);
-            while (resultSet.next()) {
-                String columnName = resultSet.getString(1);
-                char[] charArray = columnName.toCharArray();
-                charArray[0] = columnName.toUpperCase().charAt(0);
-                String getterName = "get" + new String(charArray);
-                Method getter = clazz.getMethod(getterName, null);
-                String value = (String) getter.invoke(t, null);
-                values.add(value);
+            for (Method method : clazz.getDeclaredMethods()) {
+                String methodName = method.getName();
+                if (methodName.startsWith("get")) {
+                    fields.add(methodName.replace("get", ""));
+                    values.add((String) method.invoke(t, null));
+                }
             }
-            statement.close();
-            resultSet.close();
 
-            insert(values, tableName);
+            insert(fields, values, tableName);
 
-        } catch (NoSuchMethodException | IllegalAccessException | SecurityException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+        } catch (InvocationTargetException | IllegalAccessException | SecurityException | IllegalArgumentException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static void insert(ArrayList<String> values, String tableName) throws SQLException {
+    private static void insert(ArrayList<String> fields, ArrayList<String> values, String tableName) throws SQLException {
 
-        String sql = "insert into " + tableName + " values (";
+        String sql = "insert into " + tableName + " (";
+        for (int i = 0; i < fields.size() - 1; i++)
+            sql += fields.get(i) + ",";
+        sql += fields.get(fields.size() - 1) + ")";
+
+        sql += " values (";
         for (int i = 0; i < values.size() - 1; i++)
-            sql += "?,";
-        sql += "?);";
+            sql += "'" + values.get(i) + "',";
+        sql += "'" + values.get(values.size() - 1) + "')";
 
-        PreparedStatement prepareStatement = connection.prepareStatement(sql);
-
-        for (int index = 0; index < values.size(); index++)
-            prepareStatement.setString(index + 1, values.get(index));
-
-        prepareStatement.executeUpdate();
-        prepareStatement.close();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(sql);
+        statement.close();
     }
 }
