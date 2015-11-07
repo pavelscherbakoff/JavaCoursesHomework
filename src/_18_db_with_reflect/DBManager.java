@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * create database Students;
+ * create table student (id varchar(255), name varchar(255), stip varchar(255));
+*/
 public class DBManager {
 
     private static Connection connection;
