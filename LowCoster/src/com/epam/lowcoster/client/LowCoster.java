@@ -154,6 +154,7 @@ public class LowCoster implements EntryPoint {
 		errorLabel.setStyleName("serverResponseLabelError");
 
 		final Button submitButton = new Button("Register");
+		final Button cancelButton = new Button("Cancel");
 
 		FlexTable layout = new FlexTable();
 		layout.setCellSpacing(6);
@@ -175,6 +176,7 @@ public class LowCoster implements EntryPoint {
 		layout.setHTML(6, 0, "Passport");
 		layout.setWidget(6, 1, passportField);
 		layout.setWidget(7, 0, submitButton);
+		layout.setWidget(7, 1, cancelButton);
 		layout.setWidget(8, 1, errorLabel);
 
 		DecoratorPanel decPanel = new DecoratorPanel();
@@ -199,10 +201,10 @@ public class LowCoster implements EntryPoint {
 				String passport = passportField.getText().isEmpty() ? null : passportField.getText();
 
 				lowCosterService.registerClient(login, password, firstName, secondName, sex, passport,
-						new AsyncCallback<Integer>() {
+						new AsyncCallback<Void>() {
 
 					@Override
-					public void onSuccess(Integer result) {
+					public void onSuccess(Void result) {
 						final DialogBox dialogBox = new DialogBox();
 						dialogBox.center();
 						final Button confirmButton = new Button("OK");
@@ -225,6 +227,14 @@ public class LowCoster implements EntryPoint {
 						Window.alert(caught.getMessage());
 					}
 				});
+			}
+		});
+		
+		cancelButton.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				drawLoginForm();
 			}
 		});
 	}
@@ -646,10 +656,10 @@ public class LowCoster implements EntryPoint {
 		dialogBox.center();
 		final VerticalPanel dialogVPanel = new VerticalPanel();
 
-		lowCosterService.cancelOrder(ticketId, flightId, new AsyncCallback<Integer>() {
+		lowCosterService.cancelOrder(ticketId, flightId, new AsyncCallback<Void>() {
 
 			@Override
-			public void onSuccess(Integer result) {
+			public void onSuccess(Void result) {
 				refreshFilghtsTable();
 				refreshMyFilghtsTable();
 				dialogVPanel.add(new HTML("Order is cancelled!"));
@@ -681,10 +691,10 @@ public class LowCoster implements EntryPoint {
 		if (isPaid)
 			dialogVPanel.add(new HTML("Ticket is already paid!"));
 		else
-			lowCosterService.payTicket(ticketId, new AsyncCallback<Integer>() {
+			lowCosterService.payTicket(ticketId, new AsyncCallback<Void>() {
 
 				@Override
-				public void onSuccess(Integer result) {
+				public void onSuccess(Void result) {
 					refreshMyFilghtsTable();
 					dialogVPanel.add(new HTML("Ticket is paid. Thank you!"));
 				}

@@ -119,9 +119,6 @@ public class DBManager {
 		try {
 			OrderedTicketMapper mapper = session.getMapper(OrderedTicketMapper.class);
 			List<OrderedTicket> myFlights = mapper.getMyFlights(userId);
-			if (myFlights.isEmpty()) {
-				throw new IllegalArgumentException("There are no flights");
-			}
 			return myFlights;
 		} finally {
 			session.close();

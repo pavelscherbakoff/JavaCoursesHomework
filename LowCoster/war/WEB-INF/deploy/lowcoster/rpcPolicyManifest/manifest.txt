@@ -1,3 +1,3 @@
 # Module lowcoster
 # RPC service class, partial path of RPC policy file
-com.epam.lowcoster.client.LowCosterService, 8ED31A15F923298A5AF89C783FA8497F.gwt.rpc
+com.epam.lowcoster.client.LowCosterService, EBED5A58F9148E8F29A625FA2D1933DA.gwt.rpc

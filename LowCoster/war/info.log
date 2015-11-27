@@ -1,0 +1,14 @@
+2015-11-26 11:51:10,132 [qtp1285524499-30] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - User user1 is logged in
+2015-11-26 11:51:10,175 [qtp1285524499-47] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Arrivals are found
+2015-11-26 11:51:10,177 [qtp1285524499-32] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Departureds are found
+2015-11-26 11:51:10,291 [qtp1285524499-31] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights for user 1 are found
+2015-11-26 11:51:34,038 [qtp1285524499-30] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights are found for query: departure = SAINT-PETERSBURG, arrival = MOSCOW, date = Thu Dec 03 00:00:00 MSK 2015
+2015-11-26 11:51:36,336 [qtp1285524499-47] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flight is ordered for userId 1: SD130 / SAINT-PETERSBURG (Thu Dec 03 12:00:00 MSK 2015) - MOSCOW (Thu Dec 03 13:30:00 MSK 2015) / 2000$ / 200 seats are free
+2015-11-26 11:51:36,336 [qtp1285524499-47] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights are found for query: departure = SAINT-PETERSBURG, arrival = MOSCOW, date = Thu Dec 03 12:00:00 MSK 2015
+2015-11-26 11:51:36,359 [qtp1285524499-30] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights for user 1 are found
+2015-11-26 11:51:36,359 [qtp1285524499-32] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights are found for query: departure = SAINT-PETERSBURG, arrival = MOSCOW, date = Thu Dec 03 00:00:00 MSK 2015
+2015-11-26 11:51:39,885 [qtp1285524499-32] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Ticket 3 is paid
+2015-11-26 11:51:39,890 [qtp1285524499-30] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights for user 1 are found
+2015-11-26 11:51:41,467 [qtp1285524499-32] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Order is cancelled. TicketId 3, FlightId 16
+2015-11-26 11:51:41,483 [qtp1285524499-31] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights are found for query: departure = SAINT-PETERSBURG, arrival = MOSCOW, date = Thu Dec 03 00:00:00 MSK 2015
+2015-11-26 11:51:41,484 [qtp1285524499-47] INFO  com.epam.lowcoster.server.LowCosterServiceImpl - Flights for user 1 are found

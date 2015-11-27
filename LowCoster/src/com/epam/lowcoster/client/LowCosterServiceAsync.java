@@ -21,10 +21,10 @@ public interface LowCosterServiceAsync {
 
 	void searchMyFlights(Integer userId, AsyncCallback<List<OrderedTicket>> asyncCallback);
 
-	void payTicket(int ticketId, AsyncCallback<Integer> asyncCallback);
+	void payTicket(int ticketId, AsyncCallback<Void> asyncCallback);
 
 	void registerClient(String login, String password, String firstName, String secondName, String sex, String passwordId,
-			AsyncCallback<Integer> asyncCallback);
+			AsyncCallback<Void> asyncCallback);
 
-	void cancelOrder(int ticketId, int flightId, AsyncCallback<Integer> asyncCallback);
+	void cancelOrder(int ticketId, int flightId, AsyncCallback<Void> asyncCallback);
 }

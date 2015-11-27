@@ -23,9 +23,9 @@ public interface LowCosterService extends RemoteService {
 	
 	List<OrderedTicket> searchMyFlights(Integer userId);
 	
-	Integer payTicket(int ticketId);
+	void payTicket(int ticketId);
 	
-	Integer registerClient(String login, String password, String firstName, String secondName, String sex, String passwordId);
+	void registerClient(String login, String password, String firstName, String secondName, String sex, String passwordId);
 	
-	Integer cancelOrder(int ticketId, int flightId);
+	void cancelOrder(int ticketId, int flightId);
 }
